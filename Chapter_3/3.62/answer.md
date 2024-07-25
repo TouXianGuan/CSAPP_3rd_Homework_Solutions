@@ -8,7 +8,6 @@ long switch3(long *p1, long *p2, mode_t action)
     {
     case MODE_A:
         result = *p2;
-        action = *p1;
         *p2 = *p1;
         break;
     case MODE_B:

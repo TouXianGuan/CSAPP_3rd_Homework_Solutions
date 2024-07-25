@@ -5,20 +5,20 @@ long switch_prob(long x, long n)
     long result = x;
     switch (n)
     {
-    case 0:
-    case 2:
+    case 60:
+    case 62:
         result = 8 * x;
         break;
-    case 3:
+    case 63:
         result = n >> 3;
         break;
-    case 4:
+    case 64:
         x = 15 * x;
-    case 5:
+    case 65:
         x = x * x;
-    case 1:
+    case 61:
     default:
-        result = x + 59;
+        result = x + 75;
         break;
     }
     return result;
