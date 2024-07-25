@@ -1,4 +1,4 @@
-# 3.59 stem
+# 3.59 question
 
 The following code computes the 128-bit product of two 64-bit signed values *x* and *y* and stores the result in memory.
 
