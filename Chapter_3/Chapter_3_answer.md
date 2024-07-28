@@ -150,3 +150,47 @@ NR(x) (3 * (x))
 
 NC(X) (4 * (x) + 1)
 
+## 3.67
+
+### A
+
+- M[%rsp+80] z
+- M[%rsp+72] x
+- M[%rsp+64] y
+- M[%rsp+24] z
+- M[%rsp+16] &z (%rsp+24)
+- M[%rsp+8] y
+- M[%rsp+0] x
+
+### B
+
+&s in %rdi; x, y, &z in the stack frame.
+
+### C
+
+Use movq instruction to load s.a[0], s.a[1], s.p to registers.
+
+### D
+
+Use movq instruction to store r.u[0], r.u[1], r.q from registers.
+
+### E
+
+r has been stored in %rsp+64. So loading r.u[0] from M[%rsp+64], loading r.u[1] form M[%rsp+72], loading r.q form M[%rsp+80].
+
+### F
+
+The first way is using registers. When the size of passed argument is smaller than 8 bits (include 8 bits), we can use registers. When we pass a structure or other heterigenous data structures, we need use stack. it is the second way. Returned values is analogous.l;
+
+## 3.68
+
+A is 5; B is 9.
+
+## 3.69
+
+
+
+
+## References
+
+[CSAPP 第三章家庭作业 - 付玬熙 - 博客园](https://www.cnblogs.com/fudanxi/p/17094591.html)
