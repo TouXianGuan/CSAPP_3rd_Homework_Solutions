@@ -1,4 +1,4 @@
-# Chapter3 answer
+# Chapter3 Answer
 
 ## 3.58
 
@@ -188,7 +188,138 @@ A is 5; B is 9.
 
 ## 3.69
 
+### A
 
+7
+
+### B
+
+```
+typedef struct {
+	int idx;
+	int x[4];
+} a_struct;
+```
+
+## 3.70
+
+### A
+
+0; 8; 0; 8.
+
+### B
+
+16
+
+### C
+
+up->e2.x = *((up->e2.next)->e1.p) - up->e2.next->e1.y
+
+## 3.71
+
+```
+#include <stdio.h>
+
+#define GOOD_ECHO_SIZE 10
+
+int good_echo()
+{
+    char a[GOOD_ECHO_SIZE];
+
+    while (1)
+    {
+        char *p = fgets(a, GOOD_ECHO_SIZE, stdin);
+        if (!p)
+        {
+            return ferror(stdin);
+        }
+        printf("%s", p);
+    }
+}
+
+int main()
+{
+    printf("%d\n", good_echo());
+
+    return 0;
+}
+```
+
+## 3.72
+
+### A
+
+s2 = s1 - ((8 * n + 30) - (8 * n + 30) mod 16))
+
+### B
+
+p = (s2 + 15) - ((s2 + 15) mod 16)
+
+### C
+
+e1_min = 1;
+
+e1_max = 24
+
+### D
+
+The adress of p is a multiple of 16. The adress of s2 is s1 subtract a multiple of 16 and it can contain p;
+
+## 3.73
+
+```
+range_t find_range(float x)
+{
+    asm(
+        "vxorps %xmm1, %xmm1, %xmm1\n\t"
+        "vucomiss %xmm0, %xmm1\n\t"
+        "ja .LA\n\t"
+        "je .LB\n\t"
+        "jb .LC\n\t"
+        "jmp .LD\n\t"
+        ".LA:\n\t"
+        "movl $0, %eax\n\t"
+        "jmp .LE\n\t"
+        ".LB:\n\t"
+        "movl $1, %eax\n\t"
+        "jmp .LE\n\t"
+        ".LC:\n\t"
+        "movl $2, %eax\n\t"
+        "jmp .LE\n\t"
+        ".LD:\n\t"
+        "movl $3, %eax\n\t"
+        "jmp .LE\n\t"
+        ".LE:\n\t");
+}
+```
+
+## 3.74
+
+```
+range_t find_range(float x)
+{
+    asm(
+        "movl $3, %eax\n\t"
+        "vxorps %xmm1, %xmm1, %xmm1\n\t"
+        "vucomiss %xmm0, %xmm1\n\t"
+        "movl $0, %edx\n\t"
+        "cmova %edx, %eax\n\t"
+        "movl $1, %edx\n\t"
+        "cmove %edx, %eax\n\t"
+        "movl $2, %edx\n\t"
+        "cmovb %edx, %eax\n\t");
+}
+```
+
+## 3.75
+
+### A
+
+real in %xmm0, imag in %xmm1.
+
+### B
+
+return %xmm0 and %xmm1.
 
 
 ## References
